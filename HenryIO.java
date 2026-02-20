@@ -1,4 +1,12 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
 import java.util.StringTokenizer;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -63,57 +71,57 @@ public class HenryIO {
         out.close();
     }
 
-	public Optional<Integer> tryNextInt() throws IOException {
-		String token = next();
-		if (token == null) {
-			return Optional.empty();
-		}
-		return Optional.of(Integer.parseInt(token));
-	}
+    public Optional<Integer> tryNextInt() throws IOException {
+        String token = next();
+        if (token == null) {
+            return Optional.empty();
+        }
+        return Optional.of(Integer.parseInt(token));
+    }
 
-	public Optional<Long> tryNextLong() throws IOException {
-		String token = next();
-		if (token == null) {
-			return Optional.empty();
-		}
-		return Optional.of(Long.parseLong(token));
-	}
+    public Optional<Long> tryNextLong() throws IOException {
+        String token = next();
+        if (token == null) {
+            return Optional.empty();
+        }
+        return Optional.of(Long.parseLong(token));
+    }
 
-	public Optional<Double> tryNextDouble() throws IOException {
-		String token = next();
-		if (token == null) {
-			return Optional.empty();
-		}
-		return Optional.of(Double.parseDouble(token));
-	}
+    public Optional<Double> tryNextDouble() throws IOException {
+        String token = next();
+        if (token == null) {
+            return Optional.empty();
+        }
+        return Optional.of(Double.parseDouble(token));
+    }
 
-	public Optional<String> tryNext() throws IOException {
-		String token = next();
-		if (token == null) {
-			return Optional.empty();
-		}
-		return Optional.of(token);
-	}
-	
-	public Optional<String> tryNextLine() throws IOException {
-		String line = br.readLine();
-		if (line == null) {
-			return Optional.empty();
-		}
-		return Optional.of(line);
-	}
+    public Optional<String> tryNext() throws IOException {
+        String token = next();
+        if (token == null) {
+            return Optional.empty();
+        }
+        return Optional.of(token);
+    }
+    
+    public Optional<String> tryNextLine() throws IOException {
+        String line = br.readLine();
+        if (line == null) {
+            return Optional.empty();
+        }
+        return Optional.of(line);
+    }
 
-	public Stream<String> lines() {
-		return br.lines();
-	}
+    public Stream<String> lines() {
+        return br.lines();
+    }
 
-	public Stream<String> tokens() {
-		return Stream.generate(() -> {
-			try {
-				return next();
-			} catch (IOException e) {
-				throw new UncheckedIOException(e);
-			}
-		}).takeWhile(token -> token != null);
-	}
+    public Stream<String> tokens() {
+        return Stream.generate(() -> {
+            try {
+                return next();
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        }).takeWhile(token -> token != null);
+    }
 }
